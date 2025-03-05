@@ -1,0 +1,24 @@
+name: System Info Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  system-info:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Checkout code
+      #   uses: actions/checkout@v3
+
+      - name: Install inxi
+        run: sudo apt-get install -y inxi
+
+      - name: Run inxi
+        run: inxi -b -c 0
+
+      # - name: Run benchmark
+      #   run: curl -sL https://yabs.sh | bash
